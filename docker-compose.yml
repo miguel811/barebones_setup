@@ -1,0 +1,183 @@
+services:
+    gateway:
+        depends_on:
+          - monolith
+          - client_frontend
+        build:
+          context: ./gateway
+          dockerfile: gateway.DockerFile
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - back-public:/var/www/html/public
+        ports:
+          - 80:80
+        networks:
+          beta-network:
+              aliases:
+                - something.com
+
+    mysql:
+        container_name: mysql
+        image: mysql:8.0
+        volumes:
+            - db-dev:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        ports:
+            - ${FORWARD_DB_PORT:-3306}:3306
+        networks:
+            - beta-network
+
+    monolith:
+        container_name: monolith
+        build:
+            context: ./monolith/backoffice_api
+            dockerfile: ../backoffice_api.DockerFile
+        ports:
+            - ${FORWARD_MONOLITH_PORT:-9000}:9000
+        volumes:
+            - back-app:/var/www/html/app
+            - back-config:/var/www/html/config
+            - back-database:/var/www/html/database
+            - back-routes:/var/www/html/routes
+            - back-public:/var/www/html/public
+            - back-tests:/var/www/html/tests
+        depends_on:
+            - mysql
+        networks:
+            - beta-network
+
+    client_frontend:
+        stdin_open: true
+        container_name: client_frontend
+        ports:
+            - ${FORWARD_FRONTEND_PORT:-5173}:5173
+        build:
+          context: ./client_frontend
+          dockerfile: ./client_frontend.DockerFile
+        volumes:  
+          - client_frontend-src:/app/src
+        networks:
+            - beta-network
+        entrypoint: ['npm', 'run', 'dev']
+
+    pma:
+        image: phpmyadmin:5.1
+        restart: always
+        environment:
+            - PMA_ARBITRARY=1
+            - PMA_HOST=mysql
+            - PMA_USER=${DB_USERNAME}
+            - PMA_PASSWORD=${DB_PASSWORD}
+            - PMA_PORT=${DB_PORT}
+        depends_on:
+            - mysql
+        ports:
+            - 8888:80
+        networks:
+            - beta-network
+
+    redis:
+        image: redis:alpine
+        ports:
+            - ${FORWARD_REDIS_PORT:-6379}:6379
+        volumes:
+            - ${REDIS_VOLUME_LOCAL:-./database/redis-data}:/data
+        networks:
+            - beta-network
+        healthcheck:
+            test:
+                - CMD
+                - redis-cli
+                - ping
+            retries: 3
+            timeout: 5s
+
+    minio:
+        image: minio/minio:latest
+        ports:
+            - ${FORWARD_MINIO_PORT:-9000}:9000
+            - ${FORWARD_MINIO_CONSOLE_PORT:-8900}:8900
+        environment:
+            MINIO_ROOT_USER: ${MINIO_ROOT_USER:-sail}
+            MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-password}
+        volumes:
+            - ${MINIO_VOLUME_LOCAL:-./storage/minio-data}:/data
+        networks:
+            - beta-network
+        command: minio server /data/minio --console-address ":${FORWARD_MINIO_CONSOLE_PORT}"
+        healthcheck:
+            test:
+                - CMD
+                - curl
+                - -f
+                - http://localhost:${FORWARD_MINIO_PORT}/minio/health/live
+            retries: 3
+            timeout: 5s
+
+    mailpit:
+        image: axllent/mailpit:latest
+        ports:
+            - ${FORWARD_MAILPIT_PORT:-1025}:1025
+            - ${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025
+        volumes:
+            - ${MP_VOLUME_LOCAL:-./storage/mail-data}:/data
+        networks:
+            - beta-network
+
+volumes:
+  client_frontend-src:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./client_frontend/vue/src
+
+  db-dev:
+    driver: local
+
+  back-app:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./monolith/backoffice_api/app
+  back-config:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./monolith/backoffice_api/config
+  back-database:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./monolith/backoffice_api/database
+  back-routes:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./monolith/backoffice_api/routes
+  back-public:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./monolith/backoffice_api/public
+  back-tests:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ./monolith/backoffice_api/tests
+
+networks:
+    beta-network:
+        driver: bridge
