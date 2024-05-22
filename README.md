@@ -3,11 +3,11 @@ Could't find a barebones setup with a docker compose file that would support the
 
 This is a project starter, so someone can start coding, not prod.
 
-Starting with a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible. Less dependencies, less complexity and more agility for eventual changes.
-
 So lets get cooking.
 
-The backend will initially be a Monolith, the arquitecture will have load balancer/gateway( actually its just routing traffic, I dont want unnecessary complexity at the start, but later it will change) and a network with all services needed in separate machines that communicate freely (within the network).
+Starting with a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel (for a backoffice and API) but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible. Less dependencies, less complexity and more agility for eventual changes.
+
+There will be 6 containers, one gateway, one Backoffice and API, mysql, redis, minio, frontend. The load balancer/gateway( actually its just routing traffic) and a network with all services needed in separate machines that communicate freely (within the network).
 
 My requirements :
 - use docker, docker compose and later kubernetes
