@@ -1,9 +1,9 @@
 # barebones_setup
-Could't find a barebones setup with a docker compose file that would do what I need. So got on to do it.
+Could't find a barebones setup with a docker compose file that would support the arquitecture solution I wanted. So got on to do it.
 
-This is meant as a project starter, so someone can start coding, not prod.
+This is a project starter, so someone can start coding, not prod.
 
-A simple start, a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible.
+Starting with a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible. Less dependencies, less complexity and more agility for eventual changes.
 
 So lets get cooking.
 
