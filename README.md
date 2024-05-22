@@ -45,15 +45,15 @@ Then setup some volumes :
 - public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
 
 Setps to boot up the system :
-composer create-project --prefer-dist laravel/laravel manage
-php artisan install:api
-composer require laravel/breeze --dev
-php artisan breeze:install
+- composer create-project --prefer-dist laravel/laravel manage
+- php artisan install:api
+- composer require laravel/breeze --dev
+- php artisan breeze:install
 
-docker ps
-docker exec -it 2abd3b0825ab(monolith id) /bin/bash
-    php artisan migrate
-    php artisan seed
+- docker ps
+- docker exec -it 2abd3b0825ab(monolith id) /bin/bash
+-     php artisan migrate
+-     php artisan seed
 
 Configure hosts to reflect the chosen url
 sudo nano /etc/hosts
