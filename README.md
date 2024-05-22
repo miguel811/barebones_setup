@@ -1,17 +1,13 @@
 # barebones_setup
-A simple start for a Load balancer, Laravel, Vue with docker, independent of external services
+Could't find a barebones setup with a docker compose file that would do what I need. So got on to do it.
 
-Starting a new pet project, I wanted to use vue and laravel but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible.
+This is meant as a project starter, so someone can start coding, not prod.
+
+A simple start, a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible.
 
 So lets get cooking.
 
-The backend will initially be a Monolith, the arquitecture will be a load balancer/gateway( actually its just routing traffic, I dont want unnecessary complexity at the start, but later it will change) and a network with all services needed in separate machines that communicate freely (within the network).
-
-I wanted some barebones solution that would fit my requirements but I couldnt find it online, google couldnt help :(
-
-So I ended up developing it, starting with the docker compose file. I want to share it in case someone else is searching for a similar solution and wants to discuss it or wants to build on this.
-
-This is meant as a project starter, so someone can start coding, not prod or anything even close to prod.
+The backend will initially be a Monolith, the arquitecture will have load balancer/gateway( actually its just routing traffic, I dont want unnecessary complexity at the start, but later it will change) and a network with all services needed in separate machines that communicate freely (within the network).
 
 My requirements :
 - use docker, docker compose and later kubernetes
@@ -27,7 +23,7 @@ My requirements :
 
 Everything is in the same internal network, at least for now, if we need to segment networks we will do it later.
 
-I choose nginx for the server in the load balancer as a reverse proxy, php-fpm in laravel, node in the frontend.
+I use nginx for the server in the load balancer as a reverse proxy, php-fpm in laravel, node in the frontend.
 
 The docker images I used, aka ingredients
 - node:lts
@@ -72,9 +68,9 @@ Now there should be two interesting apps
 
 Future steps :
 - We will need to manage versioning. Some submodules may help here.
-- Https needs to be addressed.
-- Microservice arquitecture, authorization separating logic by api domains.
-- Setup passport to manage authentication.
+- Https needs to be added.
+- Microservice arquitecture, authorization separating logic by business domains.
+- Setup Laravel passport to manage authentication.
 - Create kubernetes solution.
 - Volumes need a proper solution.
 - Implement CICD practices.
