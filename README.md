@@ -45,7 +45,11 @@ Then setup some volumes :
 - public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
 
 Setps to boot up the system :
-- composer create-project --prefer-dist laravel/laravel manage
+- cd client_frontend
+- now you may want to create the npm project with the name src, or change the folder name in client_frontend.DockerFile
+- npm create vuestic@latest
+- cd ../monolith
+- composer create-project --prefer-dist laravel/laravel backoffice_api
 - php artisan install:api
 - composer require laravel/breeze --dev
 - php artisan breeze:install
