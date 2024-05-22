@@ -65,13 +65,13 @@ Now there should be two interesting apps
 - or can use /api or /bk to setup backoffice and api, theres a nginx rule for it
 
 Future steps :
-We will need to manage versioning. Some submodules may help here.
-Https needs to be addressed.
-Microservice arquitecture, authorization separating logic by api domains.
-Setup passport to manage authentication.
-Create kubernetes solution.
-Volumes need a proper solution.
-Implement CICD practices.
+- We will need to manage versioning. Some submodules may help here.
+- Https needs to be addressed.
+- Microservice arquitecture, authorization separating logic by api domains.
+- Setup passport to manage authentication.
+- Create kubernetes solution.
+- Volumes need a proper solution.
+- Implement CICD practices.
 
 The authentication concerns :
 - external services using the API
