@@ -50,6 +50,8 @@ Setps to boot up the system :
 - npm create vuestic@latest
 - cd ../monolith
 - composer create-project --prefer-dist laravel/laravel backoffice_api
+- cp .env backoffice_api
+- cd backoffice_api
 - php artisan install:api
 - composer require laravel/breeze --dev
 - php artisan breeze:install
