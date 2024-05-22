@@ -49,11 +49,10 @@ Setps to boot up the system :
 - php artisan install:api
 - composer require laravel/breeze --dev
 - php artisan breeze:install
-
 - docker ps
 - docker exec -it 2abd3b0825ab(monolith id) /bin/bash
--     php artisan migrate
--     php artisan seed
+- php artisan migrate
+- php artisan seed
 
 Configure hosts to reflect the chosen url
 sudo nano /etc/hosts
