@@ -44,6 +44,27 @@ Then setup some volumes :
 - some development folders shared with the host so its easier to develop
 - public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
 
+Setps to boot up the system :
+composer create-project --prefer-dist laravel/laravel manage
+php artisan install:api
+composer require laravel/breeze --dev
+php artisan breeze:install
+
+docker ps
+docker exec -it 2abd3b0825ab(monolith id) /bin/bash
+    php artisan migrate
+    php artisan seed
+
+Configure hosts to reflect the chosen url
+sudo nano /etc/hosts
+127.0.0.1       localhost api.something.com bk.something.com spa.something.com something.com
+
+Now there should be two interesting apps
+- something.com, which is the vue frontend.
+- bk.something.com is the backoffice in blade.
+- api.something.com you can use for the api in laravel
+- or can use /api or /bk to setup backoffice and api, theres a nginx rule for it
+
 Future steps :
 We will need to manage versioning. Some submodules may help here.
 Https needs to be addressed.
