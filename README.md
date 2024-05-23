@@ -287,7 +287,7 @@ Project Link: [https://github.com/miguel811/barebones_setup](https://github.com/
 [Docker.com]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
 [Docker-url]: https://www.docker.com
 
-[Vuestic.com]: https://img.shields.io/badge/Vuestic-35495E?style=for-the-badge&logo=vuedotjs&logoColor=154EC1
+[Vuestic.com]: https://img.shields.io/badge/Vuestic-262824?style=for-the-badge&logo=vuedotjs&logoColor=154EC1
 [Vuestic-url]: https://ui.vuestic.dev/
 
 [Nginx.com]: https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white
