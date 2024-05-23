@@ -48,7 +48,6 @@
         <li><a href="#Built-With">Built With</a></li>
       </ul>
     </li>
-    
     <li><a href="#Getting-Started">Getting Started</a>
       <ul>
         <li><a href="#Prerequisites">Prerequisites</a></li>
