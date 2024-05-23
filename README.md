@@ -110,7 +110,7 @@ I use nginx for the server in the load balancer as a reverse proxy, php-fpm in l
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+## Built With
    
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
@@ -144,7 +144,7 @@ Docker uses some volumes :
 - some development folders shared with the host so its easier to develop
 - public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
 
-### Prerequisites
+## Prerequisites
 
 This is an list of things you need to use the software and how to install them.
 * npm
@@ -158,7 +158,7 @@ This is an list of things you need to use the software and how to install them.
   sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
   ```
 
-### Installation
+## Installation
 
 _Below is an example of how you can setup the project._
 
@@ -242,9 +242,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Miguel Figueiredo miguel.8.11@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/miguel811/barebones_setup](https://github.com/miguel811/barebones_setup)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
