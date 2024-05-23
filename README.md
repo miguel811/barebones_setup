@@ -22,16 +22,14 @@
   <h3 align="center">Barebones</h3>
 
   <p align="center">
-    A start guide for this project structure
+    A start guide to get coding a simple project with docker, laravel, vue and some other tools.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/miguel811/barebones_setup"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/miguel811/barebones_setup/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/miguel811/barebones_setup/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -71,39 +69,24 @@
 [![Product Name Screen Shot][product-screenshot]]([https://example.com](https://www.linkedin.com/in/mig-eng-solutions/))
 Starting a new project, something simple but with structure, however I couldn't find what I needed ready to use online so I will put it here.
 
-This is barebones, so someone can start coding, not prod, it will have a backoffice, a frontend and a series of services to start to build.
+This is barebones, so someone can start coding, not prod, it will have a backoffice, a frontend and some of services to start to build.
 
-The compose file, the steps to create the project and all of that is in github, it can be checked there.
+The compose file, docker files, the steps to create the project and all of that is in github, it can be downloaded there.
+
+## Structure
 
 Starting with a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel (for a backoffice and API) but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible. Less dependencies, less complexity and more agility for eventual changes.
 
 There will be 7 containers, one gateway, one Backoffice and API, mysql, redis, minio, frontend, mailpit. The load balancer/gateway( actually its just routing traffic) and a network with all services needed in separate machines that communicate freely (within the network).
 
+Everything is in the same internal network, at least for now, if we need to segment networks we will do it later.
 
-
-
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+I use nginx for the server in the load balancer as a reverse proxy, php-fpm in laravel, node in the frontend.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-### Built With
-
-    
-<img src="network.jpg" alt="sketching">
-
-My requirements :
+<!-- ABOUT THE PROJECT -->
+## The requirements
 - use docker, docker compose and later kubernetes
 - infrastructure services, redis, mysql, minio, mailpit.
 - keep it simple, no extra tools, no extra complexity
@@ -115,7 +98,20 @@ My requirements :
 - a docker compose for frontend will be made available and a dev api will allow easily externalized frontend development.
 - start with a monolith arquitecture but facilitate the switch to microservices when the basics are working
 
+## Objectives
+* Easy setup of a rather complex solution
+* Independent of unnecessary software and external services
+* Scalability : Vertical
+* Arquitecture : wants to go into services and horizontal scalling
+* Agility : Can adapt easily, has many options to develop features
+* Development : Can be developed easily by separate teams
+* Out of the box client frontend, backoffice and API
+* Authentication : out of the box for the backoffice and API, client frontend needs work
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Built With
+   
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
@@ -127,88 +123,98 @@ My requirements :
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+This is an list of things you need to use the software and how to install them.
 * npm
+* docker
+* php
+
   ```sh
-  npm install npm@latest -g
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  sudo apt install php-cli unzip
+  curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+  sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
   ```
+The docker images used here
+- node:lts
+- redis:alpine
+- minio/minio:latest
+- axllent/mailpit:latest
+- phpmyadmin:5.1
+- php:8.3-fpm
+- mysql:8.0
+- nginx
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_Below is an example of how you can setup the project._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/miguel811/barebones_setup
+   cd barebones_setup
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+2. Setup Vue, create the Vuestic project and use the name "src", either run npm install your self or let the project run it
+```sh
+cd client_frontend
+npm create vuestic@latest
+cd src
+npm install
+```
+3. Setup Laravel
+```sh
+cd ../monolith
+composer create-project --prefer-dist laravel/laravel backoffice_api
+cp .env backoffice_api
+cd backoffice_api
+php artisan install:api
+composer require laravel/breeze --dev
+php artisan breeze:install
+```
+3. Run artisan commands to initialize the DB
+```sh
+docker ps
+docker exec -it 2abd3b0825ab(monolith id) /bin/bash
+php artisan migrate
+php artisan seed
+```
+4. Configure hosts to reflect the chosen url
+```sh
+sudo nano /etc/hosts
+```
+Add "api.something.com bk.something.com spa.something.com something.com" to the localhost config.
+127.0.0.1       localhost api.something.com bk.something.com spa.something.com something.com
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
+- [ ] Services Arquitecture version
+    - [ ] Authorization and authentication
+    - [ ] Domains
+    - [ ] Services apps
+    - [ ] Networking rules
+    - [ ] Horizontal scalling
+- [ ] Versioning in submodules
+- [ ] Kubernetes configuration
+- [ ] Volumes proper solution
+- [ ] Laravel passport
+- [ ] Https
+- [ ] Implement CI CD practices
 - [ ] Multi-language Support
     - [ ] Chinese
     - [ ] Spanish
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- LICENSE -->
@@ -266,44 +272,11 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 # barebones_setup
     
-Everything is in the same internal network, at least for now, if we need to segment networks we will do it later.
 
-I use nginx for the server in the load balancer as a reverse proxy, php-fpm in laravel, node in the frontend.
-
-The docker images I used
-- node:lts
-- redis:alpine
-- minio/minio:latest
-- axllent/mailpit:latest
-- phpmyadmin:5.1
-- php:8.3-fpm
-- mysql:8.0
-- nginx
-
-Then setup some volumes :
+Docker uses some volumes :
 - mysql and redis need their volumes so we can restart the system without losing data
 - some development folders shared with the host so its easier to develop
 - public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
-
-Setps to boot up the system :
-- cd client_frontend
-- now you may want to create the npm project with the name src, or change the folder name in client_frontend.DockerFile
-- npm create vuestic@latest
-- cd ../monolith
-- composer create-project --prefer-dist laravel/laravel backoffice_api
-- cp .env backoffice_api
-- cd backoffice_api
-- php artisan install:api
-- composer require laravel/breeze --dev
-- php artisan breeze:install
-- docker ps
-- docker exec -it 2abd3b0825ab(monolith id) /bin/bash
-- php artisan migrate
-- php artisan seed
-
-Configure hosts to reflect the chosen url
-sudo nano /etc/hosts
-127.0.0.1       localhost api.something.com bk.something.com spa.something.com something.com
 
 Now there should be two interesting apps
 - something.com, which is the vue frontend.
@@ -311,23 +284,6 @@ Now there should be two interesting apps
 - api.something.com you can use for the api in laravel
 - or can use /api or /bk to setup backoffice and api, theres a nginx rule for it
 
-Future steps :
-- We will need to manage versioning. Some submodules may help here.
-- Https needs to be added.
-- Microservice arquitecture, authorization separating logic by business domains.
-- Setup Laravel passport to manage authentication.
-- Create kubernetes solution.
-- Volumes need a proper solution.
-- Implement CICD practices.
-
-The authentication concerns :
-- external services using the API
-- end-users accessing microservices
-- microservices accessing other microservices
-
-Which can be addressed by :
-- Edge authorization or, where the authorization can be handled at the gateway
-- Service authorization, where the authorization is handled by each service
   
     </main>
 	
