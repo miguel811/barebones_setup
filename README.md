@@ -115,7 +115,7 @@ I use nginx for the server in the load balancer as a reverse proxy, php-fpm in l
 * [![Vue][Vue.js]][Vue-url]
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Docker][Docker.com]][Docker-url]
-* [![Minio][Minio]][Minio-url]
+* [![Mysql][Mysql.com]][Mysql-url]
 * [![Vuestic][Vuestic.com]][Vuestic-url]
 * [![Nginx][Nginx.com]][Nginx-url]
 * [![Redis][Redis.com]][Redis-url]
@@ -296,3 +296,7 @@ Project Link: [https://github.com/miguel811/barebones_setup](https://github.com/
 [Redis-url]: https://www.redis.com
 [Node.js]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
 [Node-url]: https://www.node.js
+
+
+[Mysql.com]: https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white
+[Mysql-url]: https://www.mysql.com/
