@@ -48,16 +48,17 @@
         <li><a href="#Built-With">Built With</a></li>
       </ul>
     </li>
-    <li>
+    
+    <li><a href="#Getting-Started">Getting Started</a>
       <ul>
+        <li><a href="#Prerequisites">Prerequisites</a></li>
+        <li><a href="#Installation">Installation</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="#Roadmap">Roadmap</a></li>
+    <li><a href="#License">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -129,6 +130,21 @@ I use nginx for the server in the load balancer as a reverse proxy, php-fpm in l
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these steps.
 
+The docker images used here
+- node:lts
+- redis:alpine
+- minio/minio:latest
+- axllent/mailpit:latest
+- phpmyadmin:5.1
+- php:8.3-fpm
+- mysql:8.0
+- nginx
+
+Docker uses some volumes :
+- mysql and redis need their volumes so we can restart the system without losing data
+- some development folders shared with the host so its easier to develop
+- public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
+
 ### Prerequisites
 
 This is an list of things you need to use the software and how to install them.
@@ -142,15 +158,6 @@ This is an list of things you need to use the software and how to install them.
   curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
   sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
   ```
-The docker images used here
-- node:lts
-- redis:alpine
-- minio/minio:latest
-- axllent/mailpit:latest
-- phpmyadmin:5.1
-- php:8.3-fpm
-- mysql:8.0
-- nginx
 
 ### Installation
 
@@ -191,6 +198,13 @@ sudo nano /etc/hosts
 ```
 Add "api.something.com bk.something.com spa.something.com something.com" to the localhost config.
 127.0.0.1       localhost api.something.com bk.something.com spa.something.com something.com
+
+
+Now there should be two interesting apps
+- something.com, which is the vue frontend.
+- bk.something.com is the backoffice in blade.
+- api.something.com you can use for the api in laravel
+- or can use /api or /bk to setup backoffice and api, theres a nginx rule for it
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -269,20 +283,6 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
-
-# barebones_setup
-    
-
-Docker uses some volumes :
-- mysql and redis need their volumes so we can restart the system without losing data
-- some development folders shared with the host so its easier to develop
-- public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
-
-Now there should be two interesting apps
-- something.com, which is the vue frontend.
-- bk.something.com is the backoffice in blade.
-- api.something.com you can use for the api in laravel
-- or can use /api or /bk to setup backoffice and api, theres a nginx rule for it
 
   
     </main>
