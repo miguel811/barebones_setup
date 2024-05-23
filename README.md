@@ -112,14 +112,18 @@ I use nginx for the server in the load balancer as a reverse proxy, php-fpm in l
 
 ## Built With
    
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
 * [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* [![Docker][Docker.com]][Docker-url]
+* [![Minio][Minio.com]][Minio-url]
+* [![Redis][Redis.com]][Redis-url]
+* [![Nginx][Nginx.com]][Nginx-url]
+* [![Node][Node.com]][Node-url]
+* [![Vuestic][Vuestic.com]][Vuestic-url]
+* [![Nginx][Nginx.com]][Nginx-url]
+* [![Redis][Redis.com]][Redis-url]
+* [![Node.js][Node.js]][Node-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -282,10 +286,9 @@ Project Link: [https://github.com/miguel811/barebones_setup](https://github.com/
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+[Docker]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com
 
-  
-    </main>
-	
-  </body>
-</html>
-
+[Nginx]: https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white
+[Redis]: https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white
+[Node.js]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
