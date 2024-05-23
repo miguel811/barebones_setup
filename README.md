@@ -115,13 +115,13 @@ I use nginx for the server in the load balancer as a reverse proxy, php-fpm in l
 * [![Vue][Vue.js]][Vue-url]
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Docker][Docker.com]][Docker-url]
-* [![Minio][Minio.com]][Minio-url]
-* [![Redis][Redis.com]][Redis-url]
-* [![Nginx][Nginx.com]][Nginx-url]
-* [![Node][Node.com]][Node-url]
-* [![Vuestic][Vuestic.com]][Vuestic-url]
-* [![Nginx][Nginx.com]][Nginx-url]
-* [![Redis][Redis.com]][Redis-url]
+* [![Minio][Minio]][Minio-url]
+* [![Redis][Redis]][Redis-url]
+* [![Nginx][Nginx]][Nginx-url]
+* [![Node][Node]][Node-url]
+* [![Vuestic][Vuestic]][Vuestic-url]
+* [![Nginx][Nginx]][Nginx-url]
+* [![Redis][Redis]][Redis-url]
 * [![Node.js][Node.js]][Node-url]
 
 
@@ -290,5 +290,8 @@ Project Link: [https://github.com/miguel811/barebones_setup](https://github.com/
 [Docker-url]: https://www.docker.com
 
 [Nginx]: https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white
+[Nginx-url]: https://www.nginx.com
 [Redis]: https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white
+[Redis-url]: https://www.redis.com
 [Node.js]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
+[Node.js-url]: https://www.node.js
