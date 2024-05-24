@@ -67,6 +67,7 @@
 ## Barebones step by step
 
 [![Product Name Screen Shot][product-screenshot]]([https://www.linkedin.com/in/mig-eng-solutions](https://www.linkedin.com/in/mig-eng-solutions/))
+
 I'm starting a new project that is simple but structured. Since I couldn't find a suitable template online, I decided to create one myself.
 
 This setup is barebones, designed to help someone start coding—not for production use. It includes a back office, a front end, and several services to get started.
