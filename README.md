@@ -127,10 +127,10 @@ I use nginx for the server in the load balancer as a reverse proxy, php-fpm in l
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these steps.
+This is an example of how we may create the project, do as you will.
+Dont forget to change the mysql password in the .env files. There are two .env files.
 
-The docker images used here
+Resources : docker images used
 - node:lts
 - redis:alpine
 - minio/minio:latest
@@ -140,7 +140,7 @@ The docker images used here
 - mysql:8.0
 - nginx
 
-Docker uses some volumes :
+And Docker uses some volumes :
 - mysql and redis need their volumes so we can restart the system without losing data
 - some development folders shared with the host so its easier to develop
 - public files shared between the backoffice and the loadbalancer, it will serve some files directly instead of requesting them from the backoffice
