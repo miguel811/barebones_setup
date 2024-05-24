@@ -74,14 +74,13 @@ This setup is barebones, designed to help someone start coding—not for product
 The compose file, Docker files, and the steps to create the project are all available on GitHub. You can download them from <a href="https://github.com/miguel811/barebones_setup">there</a>.
 
 ## Structure
+I'm starting with a load balancer and plan to use Vue (with Vuestic Admin) and Laravel (for the back office and API), but not on the same machine. This allows for future changes to the solution architecture. I will avoid using inner Laravel tools like Sail or Inertia, sticking to Blades and Breeze, and minimizing external services to reduce dependencies, complexity, and increase agility for eventual changes.
 
-Starting with a Load balancer, I wanted to use vue (vuestic admin ready to go) and laravel (for a backoffice and API) but not in the same machine so that later I could change the solution arquitecture, no inner Laravel tools like Sail or Inertia just blades and Breeze, and as few external services as possible. Less dependencies, less complexity and more agility for eventual changes.
+There will be seven containers: one gateway, one for the back office and API, MySQL, Redis, MinIO, the frontend, and Mailpit. The load balancer/gateway will primarily handle traffic routing, and there will be a network connecting all services on separate machines, allowing free communication within the network.
 
-There will be 7 containers, one gateway, one Backoffice and API, mysql, redis, minio, frontend, mailpit. The load balancer/gateway( actually its just routing traffic) and a network with all services needed in separate machines that communicate freely (within the network).
+Currently, everything is on the same internal network. If network segmentation is needed in the future, we can address it then.
 
-Everything is in the same internal network, at least for now, if we need to segment networks we will do it later.
-
-I use nginx for the server in the load balancer as a reverse proxy, php-fpm in laravel, node in the frontend.
+For the server in the load balancer, I use Nginx as a reverse proxy, PHP-FPM for Laravel, and Node.js for the frontend.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
