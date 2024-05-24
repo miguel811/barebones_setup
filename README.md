@@ -66,12 +66,12 @@
 <!-- ABOUT THE PROJECT -->
 ## Barebones step by step
 
-[![Product Name Screen Shot][product-screenshot]]([https://example.com](https://www.linkedin.com/in/mig-eng-solutions/))
-Starting a new project, something simple but with structure, however I couldn't find what I needed ready to use online so I will put it here.
+[![Product Name Screen Shot][product-screenshot]]([https://www.linkedin.com/in/mig-eng-solutions](https://www.linkedin.com/in/mig-eng-solutions/))
+I'm starting a new project that is simple but structured. Since I couldn't find a suitable template online, I decided to create one myself.
 
-This is barebones, so someone can start coding, not prod, it will have a backoffice, a frontend and some of services to start to build.
+This setup is barebones, designed to help someone start coding—not for production use. It includes a back office, a front end, and several services to get started.
 
-The compose file, docker files, the steps to create the project and all of that is in github, it can be downloaded there.
+The compose file, Docker files, and the steps to create the project are all available on GitHub. You can download them from <a href="https://github.com/miguel811/barebones_setup">there</a>.
 
 ## Structure
 
